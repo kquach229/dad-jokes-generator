@@ -7,6 +7,11 @@ export default function LoginPage() {
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [clickedSignUp, setClickedSignUp] = useState(false);
 
+  const handleClick = () => {
+    if (isSigningUp) {
+      setClickedSignUp(true);
+    }
+  };
   return (
     <div className='min-h-screen flex flex-col items-center justify-center bg-[#d7eaf3] p-4'>
       <form className='bg-white p-8 rounded-lg shadow-lg max-w-sm w-full'>
@@ -24,7 +29,7 @@ export default function LoginPage() {
             name='email'
             type='email'
             required
-            className='w-full p-2 border border-[#77b5d9] rounded focus:outline-none focus:ring-2 focus:ring-[#77b5d9]'
+            className='text-black w-full p-2 border border-[#77b5d9] rounded focus:outline-none focus:ring-2 focus:ring-[#77b5d9]'
           />
         </div>
         <div className='mb-6'>
@@ -43,6 +48,7 @@ export default function LoginPage() {
         </div>
         <div className='flex space-x-4 mb-4'>
           <button
+            onClick={handleClick}
             formAction={isSigningUp ? signup : login}
             className='w-full bg-[#77b5d9] text-white py-2 rounded hover:bg-[#14397d] transition-colors'>
             {isSigningUp ? 'Sign up' : 'Log in'}
@@ -58,7 +64,9 @@ export default function LoginPage() {
         {isSigningUp ? (
           <p className='text-[#14397d]'>
             Already have an account?{' '}
-            <button className='text-[#77b5d9] underline hover:text-[#14397d]'>
+            <button
+              onClick={() => setIsSigningUp(false)}
+              className='text-[#77b5d9] underline hover:text-[#14397d]'>
               Log In
             </button>
           </p>
@@ -66,7 +74,7 @@ export default function LoginPage() {
           <p className='text-[#14397d]'>
             Don’t have an account?{' '}
             <button
-              onClick={() => setClickedSignUp(true)}
+              onClick={() => setIsSigningUp(true)}
               className='text-[#77b5d9] underline hover:text-[#14397d]'>
               Sign Up
             </button>

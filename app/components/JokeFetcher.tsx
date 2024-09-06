@@ -33,7 +33,7 @@ const JokeFetcher = ({ user }: JokeFetcherProps) => {
     fetchJoke();
   }, []);
 
-  const saveJokeText = user ? 'Save Joke' : 'Login to Save Joke';
+  const saveJokeText = user ? 'Save Joke' : 'Login to Start Saving Jokes';
 
   return (
     <div className='w-full flex flex-col items-center justify-center min-h-screen bg-[#d7eaf3] text-[#14397d] p-4'>
@@ -53,7 +53,9 @@ const JokeFetcher = ({ user }: JokeFetcherProps) => {
               alert('joke saved!');
             }}
             disabled={!user}
-            className='bg-[#14397d] text-white py-2 px-6 rounded-lg hover:bg-[#0f2f6a] transition-colors'>
+            className={`${
+              !user ? 'bg-gray-700 hover:bg-gray-700' : 'bg-[#14397d]'
+            }  text-white py-2 px-6 rounded-lg hover:bg-[#0f2f6a] transition-colors`}>
             {saveJokeText}
           </button>
         </p>

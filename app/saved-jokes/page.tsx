@@ -17,7 +17,7 @@ const SavedJokes = async () => {
     if (error) {
       console.error('error fetching jokes:', error);
     }
-    console.log('jokesData', jokesData);
+
     jokes = jokesData || [];
   }
 
